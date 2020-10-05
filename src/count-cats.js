@@ -5,9 +5,11 @@ module.exports = function countCats(backyard) {
   let cat = '^^';
 
   backyard.forEach(element => {
-    if (element.includes(cat)) {
-      catCounter++;
-    }
+    element.forEach(subElement => {
+      if (subElement === cat) {
+        catCounter++;
+      }
+    })
   });
 
   return catCounter;
