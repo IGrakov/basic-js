@@ -9,7 +9,7 @@ module.exports = function countCats(backyard) {
       if (subElement === cat) {
         catCounter++;
       }
-    })
+    });
   });
 
   return catCounter;
