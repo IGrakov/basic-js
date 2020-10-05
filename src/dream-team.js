@@ -9,10 +9,10 @@ module.exports = function createDreamTeam(members) {
   members.forEach(element => {
     if (typeof element === 'string' ) 
       if (element.length > 0) {
-        element = element.trim();
+        element = element.trim().toUpperCase();
         res.push(element[0]);
     }
   });
 
-  return res.sort().join('').toUpperCase();
+  return res.sort().join('');
 };
