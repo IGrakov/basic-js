@@ -9,7 +9,7 @@ module.exports = function createDreamTeam(members) {
   members.forEach(element => {
     if (typeof element === 'string' ) 
       if (element.length > 0) {
-        //element.trim();
+        element = element.trim();
         res.push(element[0]);
     }
   });
