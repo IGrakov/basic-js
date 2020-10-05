@@ -6,7 +6,7 @@ module.exports = function createDreamTeam(members) {
   }
   res = [];
 
-  members.array.forEach(element => {
+  members.forEach(element => {
     if (typeof element === 'string' ) 
       if (element.length > 0) {
         element.trim();
