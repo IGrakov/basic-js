@@ -2,7 +2,7 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(inputDate) {
 
-  const seasons = [winter, spring, summer, autumn];
+  const seasons = ['winter', 'spring', 'summer', 'autumn'];
 
   if (typeof inputDate === 'undefined') {
     return 'Unable to determine the time of year!';
