@@ -21,7 +21,7 @@ module.exports = function transform(arr) {
         break;
       case '--discard-prev':
         // if there is previous item delete it and decrease counter
-        if (i - 1 < 0) {
+        if (i - 1 >= 0) {
           transformedArr.splice(i - 1, 1)
           i--;
         }
@@ -33,12 +33,20 @@ module.exports = function transform(arr) {
         // if there is next item replace current item by copy of the next one
         if (i + 1 < transformedArr.length) {
           transformedArr[i] = transformedArr[i + 1];
+        } else {
+          // delete control sequence and decrease counter
+          transformedArr.splice(i, 1);
+          i--;
         }
         break;
       case '--double-prev':
         // if there is previous item replace current item by copy of the previous one
-        if (i - 1 < 0) {
+        if (i - 1 >= 0) {
           transformedArr[i] = transformedArr[i - 1];
+        }else {
+          // delete control sequence and decrease counter
+          transformedArr.splice(i, 1);
+          i--;
         }
         break;
     }
