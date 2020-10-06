@@ -7,6 +7,7 @@ module.exports = function transform(arr) {
     return [];
   }
   let transformedArr = arr.slice();
+  let controlSeq = ['--discard-next', '--discard-prev', '--double-next', '--double-prev'];
 
   for (let i = 0; i < transformedArr.length; i++) {
     switch (transformedArr[i]) {
@@ -16,8 +17,8 @@ module.exports = function transform(arr) {
           transformedArr.splice(i + 1, 1)
         }
         // delete control sequence and decrease counter
-        transformedArr.splice(i, 1);
-        i--;
+        //transformedArr.splice(i, 1);
+        //i--;
         break;
       case '--discard-prev':
         // if there is previous item delete it and decrease counter
@@ -26,29 +27,41 @@ module.exports = function transform(arr) {
           i--;
         }
         // delete control sequence and decrease counter
-        transformedArr.splice(i, 1);
-        i--;
+        //transformedArr.splice(i, 1);
+        //i--;
         break;
       case '--double-next':
         // if there is next item replace current item by copy of the next one
         if (i + 1 < transformedArr.length) {
-          transformedArr[i] = transformedArr[i + 1];
+          if (!controlSeq.includes(transformedArr[i + 1])) {
+            transformedArr[i] = transformedArr[i + 1];
+          }
         } else {
           // delete control sequence and decrease counter
-          transformedArr.splice(i, 1);
-          i--;
+          //transformedArr.splice(i, 1);
+          //i--;
         }
         break;
       case '--double-prev':
         // if there is previous item replace current item by copy of the previous one
         if (i - 1 >= 0) {
-          transformedArr[i] = transformedArr[i - 1];
+          if (!controlSeq.includes(transformedArr[i - 1])) {
+            transformedArr[i] = transformedArr[i - 1];
+          }
         }else {
           // delete control sequence and decrease counter
-          transformedArr.splice(i, 1);
-          i--;
+          //transformedArr.splice(i, 1);
+          //i--;
         }
         break;
+    }  
+  }
+
+  // delete all control sequences
+  for (let i = 0; i < transformedArr; i++) {
+    if (controlSeq.includes(transformedArr[i])) {
+      transformedArr.splice(i, 1);
+      i--;
     }
   }
 
