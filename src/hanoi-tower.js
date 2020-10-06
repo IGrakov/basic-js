@@ -6,24 +6,11 @@ module.exports = function calculateHanoi(disksNumber = 0, turnsSpeed = 0) {
     turns: 0,
     seconds: 0
   }
-
-  function calculateHanoiInner(disksNumber = 0, turnsSpeed = 0) {
-    if (disksNumber === 1) {
-      result.turns++;
-      result.seconds += 3600 / turnsSpeed;
-    } else {
-      calculateHanoiInner(disksNumber - 1, turnsSpeed);
-      result.turns++;
-      result.seconds += 3600 / turnsSpeed;
-      calculateHanoiInner(disksNumber - 1, turnsSpeed);
-    }
-  }
   
   if (disksNumber > 0 && turnsSpeed > 0) {
-    calculateHanoiInner(disksNumber, turnsSpeed);
+    result.turns = 2 ** disksNumber - 1;
+    result.seconds = Math.floor(result.turns * 3600 / turnsSpeed);
   }
-
-  result.seconds = Math.floor(result.seconds);
 
   return result;
 }
