@@ -8,6 +8,7 @@ module.exports = function transform(arr) {
   }
   let transformedArr = arr.slice();
   let controlSeq = ['--discard-next', '--discard-prev', '--double-next', '--double-prev'];
+  let finalArr = [];
 
   for (let i = 0; i < transformedArr.length; i++) {
     switch (transformedArr[i]) {
@@ -59,11 +60,10 @@ module.exports = function transform(arr) {
 
   // delete all control sequences
   for (let i = 0; i < transformedArr; i++) {
-    if (controlSeq.includes(transformedArr[i])) {
-      transformedArr.splice(i, 1);
-      i--;
+    if (!controlSeq.includes(transformedArr[i])) {
+      finalArr.push(transformedArr[i]);
     }
   }
 
-  return transformedArr;
+  return finalArr;
 }
