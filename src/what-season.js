@@ -12,11 +12,11 @@ module.exports = function getSeason(inputDate) {
 
   let inputMonth = inputDate.getMonth;
 
-  if (inputMonth === 12 || inputMonth === 1 || inputMonth === 2) {
+  if (inputMonth === 11 || inputMonth === 0 || inputMonth === 1) {
     return seasons[0];
-  } else if (inputMonth > 2 && inputMonth < 6) {
+  } else if (inputMonth > 1 && inputMonth < 5) {
     return seasons[1];
-  } else if (inputMonth > 5 && inputMonth < 9) {
+  } else if (inputMonth > 4 && inputMonth < 8) {
     return seasons[2];
   } else {
     return seasons[3];
