@@ -6,7 +6,7 @@ module.exports = function transform(arr) {
   } else if (arr.length === 0) {
     return [];
   }
-  let transformedArr = arr.slice(-1);
+  let transformedArr = arr.slice();
 
   for (let i = 0; i < transformedArr.length; i++) {
     switch (transformedArr[i]) {
