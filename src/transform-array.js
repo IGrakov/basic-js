@@ -59,7 +59,7 @@ module.exports = function transform(arr) {
   }
 
   // delete all control sequences
-  for (let i = 0; i < transformedArr; i++) {
+  for (let i = 0; i < transformedArr.length; i++) {
     if (!controlSeq.includes(transformedArr[i])) {
       finalArr.push(transformedArr[i]);
     }
