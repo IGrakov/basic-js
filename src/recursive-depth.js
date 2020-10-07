@@ -8,4 +8,4 @@ module.exports = class DepthCalculator {
       return Math.max(a, calculateDepth(b));
       }, 0) : 0;
   }
-}
+};
