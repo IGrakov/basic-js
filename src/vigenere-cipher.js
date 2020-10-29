@@ -60,7 +60,7 @@ class VigenereCipheringMachine {
     if (this.cipheringMachineType) {
       return encryptedMessage
     } else {
-      return encryptedMessage.split('').reverse.join('');
+      return encryptedMessage.split('').reverse().join('');
     }
   }
 
@@ -114,7 +114,7 @@ class VigenereCipheringMachine {
     if (this.cipheringMachineType) {
       return decryptedMessage
     } else {
-      decryptedMessage.split('').reverse.join('');
+      decryptedMessage.split('').reverse().join('');
     }
   }
 }
