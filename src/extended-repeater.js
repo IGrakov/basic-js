@@ -21,9 +21,9 @@ module.exports = function repeater(str, options) {
   //   initialStr = options.addition;
   // }
 
-  initialStr += str;
+  initialStr = String(str);
 
-  if (options.repeatTimes === null || options.additionRepeatTimes === null) {
+  if (!options.hasOwnProperty('repeatTimes') || !options.hasOwnProperty('additionRepeatTimes')) {
     return initialStr;
   }
 
@@ -35,16 +35,16 @@ module.exports = function repeater(str, options) {
     additionRepeatTimes = options.additionRepeatTimes;
   }
 
-  if (options.separator != null) {
-    separator = options.separator;
+  if (options.hasOwnProperty('separator')) {
+    separator = String(options.separator);
   }
 
-  if (options.addition != null) {
-    addition = options.addition;
+  if (options.hasOwnProperty('addition')) {
+    addition = String(options.addition);
   }
 
-  if (options.additionSeparator != null) {
-    additionSeparator = options.additionSeparator;
+  if (options.hasOwnProperty('additionSeparator')) {
+    additionSeparator = String(options.additionSeparator);
   }
 
   for (let i = 0; i < repeatTimes; i++) {
