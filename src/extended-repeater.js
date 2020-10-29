@@ -2,10 +2,10 @@ const CustomError = require("../extensions/custom-error");
 
 module.exports = function repeater(str, options) {
   let initialStr = '';
-  let repeatTimes = 0;
+  let repeatTimes = 1;
   let separator = '+';
   let addition = '';
-  let additionRepeatTimes = 0;
+  let additionRepeatTimes = 1;
   let additionSeparator = '|';
   let resultingStr = '';
 
@@ -27,11 +27,11 @@ module.exports = function repeater(str, options) {
     return initialStr;
   }
 
-  if (options.repeatTimes != null) {
+  if (options.repeatTimes != null || options.repeatTimes != undefined) {
     repeatTimes = options.repeatTimes;
   }
 
-  if (options.additionRepeatTimes != null) {
+  if (options.additionRepeatTimes != null || options.additionRepeatTimes != undefined) {
     additionRepeatTimes = options.additionRepeatTimes;
   }
 
