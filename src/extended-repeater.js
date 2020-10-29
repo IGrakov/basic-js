@@ -23,15 +23,15 @@ module.exports = function repeater(str, options) {
 
   initialStr += str;
 
-  if (options.repeatTimes === null || options.additionRepeatTimes === null) {
+  if (options.repeatTimes === undefined || options.additionRepeatTimes === undefined) {
     return initialStr;
   }
 
-  if (options.repeatTimes != null) {
+  if (options.repeatTimes != undefined) {
     repeatTimes = options.repeatTimes;
   }
 
-  if (options.additionRepeatTimes != null) {
+  if (options.additionRepeatTimes != undefined) {
     additionRepeatTimes = options.additionRepeatTimes;
   }
 
