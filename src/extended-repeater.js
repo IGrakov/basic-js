@@ -21,6 +21,8 @@ module.exports = function repeater(str, options) {
   //   initialStr = options.addition;
   // }
 
+  initialStr = str;
+
   if (options.repeatTimes === null || options.additionRepeatTimes === null) {
     return initialStr;
   }
