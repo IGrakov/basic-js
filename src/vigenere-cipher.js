@@ -65,13 +65,51 @@ class VigenereCipheringMachine {
   }
 
   decrypt(message, key) {
+    if (message === null || key === null) throw Error;
+
     let messageToDecrypt = message.toUpperCase();
     let decryptionKey = key.toUpperCase();
     let decryptedMessage = '';
+
+    let plainMessageToDecrypt = '';
+    let plainDecryptionKey = '';
+    let fullDecryptionKey = '';
+
+    // select only Latin letters from the original message
+    // i.e. plain message
+    for (let i = 0; i < messageToDecrypt.length; i++) {
+      if (this.dict.indexOf(messageToDecrypt[i]) !== -1) {
+        plainMessageToDecrypt += messageToDecrypt[i];
+      }
+    }
   
-    let factor = Math.trunc(messageToDecrypt.length / decryptionKey.length);
-    let remainder = messageToDecrypt.length % decryptionKey.length;
-    decryptionKey = decryptionKey.repeat(factor) + decryptionKey.substring(0, remainder);
+    // calculate repeated key length based on plain message
+    let factor = Math.trunc(plainMessageToDecrypt.length / decryptionKey.length);
+    let remainder = plainMessageToDecrypt.length % decryptionKey.length;
+    plainDecryptionKey = decryptionKey.repeat(factor) + decryptionKey.substring(0, remainder);
+
+    // make full key by adding arbitrary symbol at the same positions
+    // where other symbols than Latin letters are in original message
+    let counter = 0;
+    for (let i = 0; i < messageToDecrypt.length; i++) {
+      if (this.dict.indexOf(messageToDecrypt[i]) !== -1) {
+        fullDecryptionKey += plainDecryptionKey[counter];
+        counter++;
+      } else {
+        fullDecryptionKey += "x";
+      }
+    }
+
+    for (let i = 0; i < messageToDecrypt.length; i++) {
+      // if symbol in message to decrypt is not a Latin letter
+      // meaning it is not in the dict add it to resulting message unchanged
+      if (this.dict.indexOf(messageToDecrypt[i]) === -1) {
+        decryptedMessage += messageToDecrypt[i];
+      } else {
+        decryptedMessage += this.dict[(this.dict.indexOf(messageToDecrypt[i]) - 
+                                        this.dict.indexOf(fullDecryptionKey[i]) + 26) % 26];
+      }
+    }
 
     if (this.cipheringMachineType) {
       return decryptedMessage
