@@ -27,7 +27,7 @@ module.exports = function repeater(str, options) {
     repeatTimes = options.repeatTimes;
   }
 
-  if (!options.hasOwnProperty('additionRepeatTimes' || options.additionRepeatTimes != null || options.additionRepeatTimes != undefined) {
+  if (!options.hasOwnProperty('additionRepeatTimes') || options.additionRepeatTimes != null || options.additionRepeatTimes != undefined) {
     additionRepeatTimes = options.additionRepeatTimes;
   }
 
