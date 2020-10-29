@@ -23,15 +23,11 @@ module.exports = function repeater(str, options) {
 
   initialStr = String(str);
 
-  if (!options.hasOwnProperty('repeatTimes') || !options.hasOwnProperty('additionRepeatTimes')) {
-    return initialStr;
-  }
-
-  if (options.repeatTimes != null || options.repeatTimes != undefined) {
+  if (!options.hasOwnProperty('repeatTimes') || options.repeatTimes != null || options.repeatTimes != undefined) {
     repeatTimes = options.repeatTimes;
   }
 
-  if (options.additionRepeatTimes != null || options.additionRepeatTimes != undefined) {
+  if (!options.hasOwnProperty('additionRepeatTimes' || options.additionRepeatTimes != null || options.additionRepeatTimes != undefined) {
     additionRepeatTimes = options.additionRepeatTimes;
   }
 
