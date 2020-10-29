@@ -50,7 +50,7 @@ class VigenereCipheringMachine {
       // if symbol in message to encrypt is not a Latin letter
       // meaning it is not in the dict add it to resulting message unchanged
       if (this.dict.indexOf(messageToEncrypt[i]) === -1) {
-        encryptedMessage += messageToEncrypt[i];
+        encryptedMessage += String(messageToEncrypt[i]);
       } else {
         encryptedMessage += this.dict[(this.dict.indexOf(messageToEncrypt[i]) + 
                                         this.dict.indexOf(fullEncryptionKey[i])) % 26];
@@ -104,7 +104,7 @@ class VigenereCipheringMachine {
       // if symbol in message to decrypt is not a Latin letter
       // meaning it is not in the dict add it to resulting message unchanged
       if (this.dict.indexOf(messageToDecrypt[i]) === -1) {
-        decryptedMessage += messageToDecrypt[i];
+        decryptedMessage += String(messageToDecrypt[i]);
       } else {
         decryptedMessage += this.dict[(this.dict.indexOf(messageToDecrypt[i]) - 
                                         this.dict.indexOf(fullDecryptionKey[i]) + 26) % 26];
