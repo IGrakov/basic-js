@@ -3,8 +3,8 @@ const CustomError = require("../extensions/custom-error");
 class VigenereCipheringMachine {
 
   constructor(type = true) {
-    let cipheringMachineType = type;
-    let dict = ['A', 'B', 'C', 'D', 'E',
+    this.cipheringMachineType = type;
+    this.dict = ['A', 'B', 'C', 'D', 'E',
                 'F', 'G', 'H', 'I', 'J',
                 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T',
@@ -24,7 +24,7 @@ class VigenereCipheringMachine {
     // select only Latin letters from the original message
     // i.e. plain message
     for (let i = 0; i < messageToEncrypt.length; i++) {
-      if (dict.indexOf(messageToEncrypt[i]) !== -1) {
+      if (this.dict.indexOf(messageToEncrypt[i]) !== -1) {
         plainMessageToEncrypt += messageToEncrypt[i];
       }
     }
@@ -38,7 +38,7 @@ class VigenereCipheringMachine {
     // where other symbols than Latin letters are in original message
     let counter = 0;
     for (let i = 0; i < messageToEncrypt.length; i++) {
-      if (dict.indexOf(messageToEncrypt[i]) !== -1) {
+      if (this.dict.indexOf(messageToEncrypt[i]) !== -1) {
         fullEncryptionKey += plainEncryptionKey[counter];
         counter++;
       } else {
@@ -49,15 +49,15 @@ class VigenereCipheringMachine {
     for (let i = 0; i < messageToEncrypt.length; i++) {
       // if symbol in message to encrypt is not a Latin letter
       // meaning it is not in the dict add it to resulting message unchanged
-      if (dict.indexOf(messageToEncrypt[i]) === -1) {
+      if (this.dict.indexOf(messageToEncrypt[i]) === -1) {
         encryptedMessage += messageToEncrypt[i];
       } else {
-        encryptedMessage += dict[(dict.indexOf(messageToEncrypt[i]) + 
-                                        dict.indexOf(fullEncryptionKey[i])) % 26];
+        encryptedMessage += this.dict[(this.dict.indexOf(messageToEncrypt[i]) + 
+                                        this,dict.indexOf(fullEncryptionKey[i])) % 26];
       }
     }
   
-    if (cipheringMachineType) {
+    if (this.cipheringMachineType) {
       return encryptedMessage
     } else {
       return encryptedMessage.split('').reverse.join('');
