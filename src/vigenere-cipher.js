@@ -53,7 +53,7 @@ class VigenereCipheringMachine {
         encryptedMessage += messageToEncrypt[i];
       } else {
         encryptedMessage += this.dict[(this.dict.indexOf(messageToEncrypt[i]) + 
-                                        this,dict.indexOf(fullEncryptionKey[i])) % 26];
+                                        this.dict.indexOf(fullEncryptionKey[i])) % 26];
       }
     }
   
@@ -73,7 +73,7 @@ class VigenereCipheringMachine {
     let remainder = messageToDecrypt.length % decryptionKey.length;
     decryptionKey = decryptionKey.repeat(factor) + decryptionKey.substring(0, remainder);
 
-    if (cipheringMachineType) {
+    if (this.cipheringMachineType) {
       return decryptedMessage
     } else {
       decryptedMessage.split('').reverse.join('');
