@@ -71,7 +71,7 @@ class VigenereCipheringMachine {
   
     let factor = Math.trunc(messageToDecrypt.length / decryptionKey.length);
     let remainder = messageToDecrypt.length % decryptionKey.length;
-    let decryptionKey = decryptionKey.repeat(factor) + decryptionKey.substring(0, remainder);
+    decryptionKey = decryptionKey.repeat(factor) + decryptionKey.substring(0, remainder);
 
     if (cipheringMachineType) {
       return decryptedMessage
