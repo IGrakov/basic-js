@@ -14,12 +14,8 @@ const chainMaker = {
   },
 
   removeLink(position) {
-    if (Number.isNaN(position) 
-        || !Number.isInteger(position)
-        || position > this.chain.length
-        || position < 1)
-    {
-      chain = [];
+    if (Number.isNaN(position) || !Number.isInteger(position) || position > this.chain.length || position < 1) {
+      this.chain = [];
       throw Error;
     }
     this.chain.splice(position - 1 , 1);
