@@ -8,7 +8,7 @@ const chainMaker = {
     return this.chain.length;
   },
 
-  addLink(value = '') {
+  addLink(value) {
     value === undefined ? this.chain.push('( )') : this.chain.push(`( ${String(value)} )`);
     return this;
   },
