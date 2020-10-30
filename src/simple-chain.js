@@ -24,7 +24,7 @@ const chainMaker = {
 
     this.chain = '';
     for (let i = 0; i < this.chainValues.length; i++) {
-      this.chain.concat('~~( ', chainValues[i], ' )');
+      this.chain.concat('~~( ', this.chainValues[i], ' )');
     }
     return this;
   },
