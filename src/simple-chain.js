@@ -29,8 +29,12 @@ const chainMaker = {
 
     this.chain = '';
     for (let i = 0; i < this.chainValues.length; i++) {
-    	if (this.chainValues[i] === '') {
+    	if (this.chainValues[i] === '' && i === 0) {
+      	this.chain += '( )';
+      } else if(this.chainValues[i] === '') {
       	this.chain += '~~( )';
+      } else if (i === 0) {
+        this.chain = this.chain + '( ' + this.chainValues[i] + ' )';
       } else {
       	this.chain = this.chain + '~~( ' + this.chainValues[i] + ' )';
       }
@@ -44,7 +48,7 @@ const chainMaker = {
     	if (this.chainValues[i] === '' && i === 0) {
       	this.chain += '( )';
       } else if(this.chainValues[i] === '') {
-      	his.chain += '~~( )';
+      	this.chain += '~~( )';
       } else if (i === 0) {
         this.chain = this.chain + '( ' + this.chainValues[i] + ' )';
       } else {
