@@ -20,6 +20,8 @@ const chainMaker = {
   removeLink(position) {
     if (Number.isNaN(position) || !Number.isInteger(position) || position > this.chainValues.length || this.chainValues < 1) throw Error;
 
+    this.chainValues.splice(position - 1 , 1);
+
     this.chain = '';
     for (let i = 0; i < this.chainValues.length; i++) {
       this.chain.concat('~~( ', chainValues[i], ' )');
