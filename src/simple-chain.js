@@ -9,21 +9,24 @@ const chainMaker = {
     return this.chainValues.length;
   },
   addLink(value = '') {
+    let valueInit = String(value);
     if (value === '' && this.getLength() === 0) {
       this.chain += '( )';
     } else if (value === '') {
     	this.chain += '~~( )';
     } else if (typeof value === 'object' && value !== null && this.getLength() === 0) {
       this.chain += '( [object Object] )';
+      valueInit = '[object Object]';
     } else if (typeof value === 'object' && value !== null ) {
       this.chain += '~~( [object Object] )';
+      valueInit = '[object Object]';
     } else if (this.getLength() === 0) {
      	this.chain = this.chain + '( ' + String(value) + ' )';
     } else {
       this.chain = this.chain + '~~( ' + String(value) + ' )';
     }
 
-    this.chainValues.push(String(value));
+    this.chainValues.push(valueInit);
     return this;
   },
   removeLink(position) {
