@@ -13,6 +13,10 @@ const chainMaker = {
       this.chain += '( )';
     } else if (value === '') {
     	this.chain += '~~( )';
+    } else if (typeof value === 'object' && value !== null && this.getLength() === 0) {
+      this.chain += '( [object Object] )';
+    } else if (typeof value === 'object' && value !== null ) {
+      this.chain += '~~( [object Object] )';
     } else if (this.getLength() === 0) {
      	this.chain = this.chain + '( ' + String(value) + ' )';
     } else {
